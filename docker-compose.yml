@@ -1,6 +1,27 @@
 version: '3.8'
 
 services:
+  laravel:
+    image: bitnami/laravel:${LARAVEL_VERSION}
+    container_name: ${APP_NAME}-laravel-${LARAVEL_VERSION}
+    volumes:
+      - ./:/app
+    environment:
+      LARAVEL_PORT_NUMBER: ${LARAVEL_PORT_NUMBER}
+      LARAVEL_SKIP_DATABASE: ${LARAVEL_SKIP_DATABASE}
+      LARAVEL_DATABASE_TYPE: ${DB_CONNECTION}
+      LARAVEL_DATABASE_HOST: ${DB_HOST}
+      LARAVEL_DATABASE_PORT_NUMBER: ${DB_PORT}
+      LARAVEL_DATABASE_NAME: ${DB_DATABASE}
+      LARAVEL_DATABASE_USER: ${DB_USERNAME}
+      LARAVEL_DATABASE_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${LARAVEL_HOST_PORT}:${LARAVEL_PORT_NUMBER}"
+    networks:
+      - rems-network
+    depends_on:
+      - mysql
+
   mysql:
     image: mysql:${MYSQL_VERSION}
     restart: unless-stopped
