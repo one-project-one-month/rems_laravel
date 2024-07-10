@@ -1,6 +1,9 @@
 # rems_laravel
 
 # Setting up for development using docker
+## generate .env
+copy .env.example and rename it .env
+
 ## install dependencies
 ```
 composer install
