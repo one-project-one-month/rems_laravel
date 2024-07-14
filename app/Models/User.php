@@ -20,7 +20,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'role'
     ];
+    public function agent()
+    {
+        return $this->hasOne(Agent::class);
+    }
+
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
