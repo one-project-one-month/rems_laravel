@@ -17,11 +17,9 @@ return new class extends Migration
             $table->foreignId('agent_id')->references('id')->on('agents');
             $table->string('first_name');
             $table->string('last_name');
-           // $table->string('license_number');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
-           // $table->string('order');
             $table->timestamps();
         });
     }
