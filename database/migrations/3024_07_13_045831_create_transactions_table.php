@@ -17,12 +17,11 @@ return new class extends Migration
             $table->foreignId("property_id")->constrained('properties');
             $table->foreignId('buyer_id')->constrained('clients');
             $table->foreignId('seller_id')->constrained('clients');
-            $table->foreignId('agent_id ')->constrained('agents');
-            $table->foreignId('agent_id ')->constrained('agents');
-            $table->date('transaction_date')->default(DB::raw('CURRENT_DATE()'));
+            $table->foreignId('agent_id')->constrained('agents');
+            $table->date('transaction_date')->default(DB::raw('(CURRENT_DATE())'));
             $table->integer('sale_price');
             $table->integer('commission');
-            $table->string('status',50);
+            $table->string('status', 50);
             $table->timestamps();
         });
     }

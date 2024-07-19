@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id("appointment_id");
             $table->foreignId('agent_id')->constrained('agents');
             $table->foreignId('client_id')->constrained('clients');
-            $table->foreignId('property_id')->constrained('property_id');
+            $table->foreignId('property_id')->constrained('properties');
             $table->date('appointment_date')->nullable(false);
             $table->time('appointment_time')->nullable(false);
             $table->string('status', 50);
