@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->references('id')->on('users')->constained()->cascadeonDelete();
             $table->string('agency_name');
             $table->string('license_number');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
-           
+
         });
     }
 

@@ -12,14 +12,14 @@ class Client extends Model
     use HasApiTokens,HasFactory,Notifiable;
     protected $fillable = [
         'user_id',
-        'agent_id',
+       // 'agent_id',
         'first_name',
         'last_name',
-        
+
         'email',
         'phone',
         'address'
-        
+
     ];
     public function user()
     {
