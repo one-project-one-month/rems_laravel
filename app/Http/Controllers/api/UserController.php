@@ -53,7 +53,6 @@ class UserController extends Controller
         } elseif ($user->role == 'client') {
             Client::create([
                 'user_id' => $user->id,
-
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'phone' => $user->phone,
