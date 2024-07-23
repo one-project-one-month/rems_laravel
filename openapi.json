@@ -1,0 +1,1364 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rems",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{{api_url}}"
+    },
+    {
+      "url": "http://127.0.0.1:8000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Agents"
+    },
+    {
+      "name": "Clients"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get User By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:42:47 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "token": "7|sv5bhYAYzfWkajVR12I3BFaELQUV2eJSJOmIx8Iz5601e61a",
+                  "status": true,
+                  "message": "found",
+                  "data": {
+                    "id": 1,
+                    "name": "agent one",
+                    "email": "agenton5e@gmail.com",
+                    "email_verified_at": null,
+                    "phone": "0987765667",
+                    "role": "client",
+                    "created_at": "2024-07-22T13:34:56.000000Z",
+                    "updated_at": "2024-07-22T13:34:56.000000Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:44:07 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "use id is not found",
+                  "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
+                  "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+                  "line": 1386,
+                  "trace": [
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
+                      "line": 47,
+                      "function": "abort",
+                      "class": "Illuminate\\Foundation\\Application",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/app/Http/Controllers/api/UserController.php",
+                      "line": 113,
+                      "function": "abort"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php",
+                      "line": 46,
+                      "function": "show",
+                      "class": "App\\Http\\Controllers\\api\\UserController",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                      "line": 260,
+                      "function": "dispatch",
+                      "class": "Illuminate\\Routing\\ControllerDispatcher",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
+                      "line": 206,
+                      "function": "runController",
+                      "class": "Illuminate\\Routing\\Route",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 806,
+                      "function": "run",
+                      "class": "Illuminate\\Routing\\Route",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 144,
+                      "function": "Illuminate\\Routing\\{closure}",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+                      "line": 50,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 119,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 805,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 784,
+                      "function": "runRouteWithinStack",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 748,
+                      "function": "runRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 737,
+                      "function": "dispatchToRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 200,
+                      "function": "dispatch",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 144,
+                      "function": "Illuminate\\Foundation\\Http\\{closure}",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+                      "line": 31,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+                      "line": 51,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php",
+                      "line": 27,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Http\\Middleware\\ValidatePostSize",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+                      "line": 110,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php",
+                      "line": 62,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Http\\Middleware\\HandleCors",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+                      "line": 57,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 183,
+                      "function": "handle",
+                      "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 119,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 175,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 144,
+                      "function": "sendRequestThroughRouter",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+                      "line": 1183,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/public/index.php",
+                      "line": 17,
+                      "function": "handleRequest",
+                      "class": "Illuminate\\Foundation\\Application",
+                      "type": "->"
+                    },
+                    {
+                      "file": "/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php",
+                      "line": 23,
+                      "function": "require_once"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login",
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Add your name in the body"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "agent one"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "agentone@gmail.com"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "asdffdsa"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "agent"
+          },
+          {
+            "name": "agency_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "agency name one"
+          },
+          {
+            "name": "license_number",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "23456"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "0987765667"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Yangon"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:39:34 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "Agent Login Success",
+                    "value": {
+                      "message": "Login successfully",
+                      "user": {
+                        "id": 3,
+                        "name": "agent12345",
+                        "email": "agent12345@gmail.com",
+                        "email_verified_at": null,
+                        "phone": "0987765667",
+                        "role": "agent",
+                        "created_at": "2024-07-22T13:39:26.000000Z",
+                        "updated_at": "2024-07-22T13:39:26.000000Z"
+                      },
+                      "token": "4|4jZEehohiqHjlZLgQunzvmavIecLdETxckpHcIQ2eaee9ed8"
+                    }
+                  },
+                  "example-1": {
+                    "summary": "Client Login Success",
+                    "value": {
+                      "message": "Login successfully",
+                      "user": {
+                        "id": 2,
+                        "name": "agent22222",
+                        "email": "agenton22222@gmail.com",
+                        "email_verified_at": null,
+                        "phone": "0987765667",
+                        "role": "client",
+                        "created_at": "2024-07-22T13:36:38.000000Z",
+                        "updated_at": "2024-07-22T13:36:38.000000Z"
+                      },
+                      "token": "5|GHjO6npB9ockuX0SjoN2Ifp4ttcbGqlrfFk29bvH8b0d1088"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents": {
+      "get": {
+        "tags": [
+          "Agents"
+        ],
+        "summary": "Get All Agents",
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data.",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:48:38 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "Get All Agents",
+                    "value": {
+                      "datas": [
+                        {
+                          "id": 1,
+                          "user_id": 3,
+                          "agency_name": "agency name one",
+                          "license_number": "23456",
+                          "phone": "0987765667",
+                          "email": "agent12345@gmail.com",
+                          "address": "Yangon",
+                          "created_at": "2024-07-22T13:39:26.000000Z",
+                          "updated_at": "2024-07-22T13:39:26.000000Z"
+                        }
+                      ]
+                    }
+                  },
+                  "example-1": {
+                    "summary": "Get Agent By ID",
+                    "value": {
+                      "token": "8|WfraL9nrZ5x58oVW9Y4xODfj8NLD1bsbKst1Lilff16ecd09",
+                      "status": true,
+                      "message": "found",
+                      "data": {
+                        "id": 1,
+                        "user_id": 3,
+                        "agency_name": "agency name one",
+                        "license_number": "23456",
+                        "phone": "0987765667",
+                        "email": "agent12345@gmail.com",
+                        "address": "Yangon",
+                        "created_at": "2024-07-22T13:39:26.000000Z",
+                        "updated_at": "2024-07-22T13:39:26.000000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:51:53 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "agent is not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/3": {
+      "put": {
+        "tags": [
+          "Agents"
+        ],
+        "summary": "Update Agent Data",
+        "description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Add your name in the body"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "agency_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "agency name update"
+          },
+          {
+            "name": "license_number",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "3456"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "09987776779"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Taungoo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:55:11 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "agent updated successfully",
+                  "data": {
+                    "id": 1,
+                    "user_id": 3,
+                    "agency_name": "agency name update",
+                    "license_number": "3456",
+                    "phone": "09987776779",
+                    "email": "agent12345@gmail.com",
+                    "address": "Taungoo",
+                    "created_at": "2024-07-22T13:39:26.000000Z",
+                    "updated_at": "2024-07-22T13:55:11.000000Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agents/5": {
+      "delete": {
+        "tags": [
+          "Agents"
+        ],
+        "summary": "Delete Agent Data",
+        "description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:58:03 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "delete success",
+                  "data": {
+                    "id": 1,
+                    "user_id": 3,
+                    "agency_name": "agency name update",
+                    "license_number": "3456",
+                    "phone": "09987776779",
+                    "email": "agent12345@gmail.com",
+                    "address": "Taungoo",
+                    "created_at": "2024-07-22T13:39:26.000000Z",
+                    "updated_at": "2024-07-22T13:55:11.000000Z"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 13:56:14 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Unauthenticated."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/clients/4": {
+      "put": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Update Client Data",
+        "description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Add your name in the body"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "first_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "thu"
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "zar"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "09765567777"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ttz@gmail.com"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Yangon"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 14:05:13 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Client updated successfully",
+                  "data": {
+                    "id": 2,
+                    "user_id": 2,
+                    "first_name": "thu",
+                    "last_name": "zar",
+                    "phone": "09765567777",
+                    "email": "ttz@gmail.com",
+                    "address": "Yangon",
+                    "created_at": "2024-07-22T13:36:38.000000Z",
+                    "updated_at": "2024-07-22T14:05:13.000000Z"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 14:03:53 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Unauthenticated."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/clients/5": {
+      "delete": {
+        "tags": [
+          "Clients"
+        ],
+        "summary": "Delete Client",
+        "description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 14:06:53 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "delete success",
+                  "data": {
+                    "id": 2,
+                    "user_id": 2,
+                    "first_name": "thu",
+                    "last_name": "zar",
+                    "phone": "09765567777",
+                    "email": "ttz@gmail.com",
+                    "address": "Yangon",
+                    "created_at": "2024-07-22T13:36:38.000000Z",
+                    "updated_at": "2024-07-22T14:05:13.000000Z"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.3.9"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Mon, 22 Jul 2024 14:06:05 GMT"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Unauthenticated."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
