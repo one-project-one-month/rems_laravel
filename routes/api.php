@@ -19,5 +19,4 @@ Route::apiResource('users',UserController::class);
  Route::apiResource("clients",ClientController::class);
  Route::apiResource("agents",AgentController::class);
 
-//appoinment 
 Route::resource("appointments",appointmentController::class);
