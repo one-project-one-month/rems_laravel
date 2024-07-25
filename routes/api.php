@@ -19,4 +19,5 @@ Route::apiResource('users',UserController::class);
  Route::apiResource("clients",ClientController::class);
  Route::apiResource("agents",AgentController::class);
 
-Route::resource("appointments",appointmentController::class);
+Route::apiResource("appointments",appointmentController::class);
+
