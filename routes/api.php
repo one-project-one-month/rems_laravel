@@ -20,19 +20,3 @@ Route::apiResource('users',UserController::class);
  Route::apiResource("agents",AgentController::class);
 
 
- Route::post('transaction/create',[transactionController::class,'create']);
- Route::get('transaction/view',[transactionController::class,'view']);
- Route::get('transaction/view/{id}',[transactionController::class,'view2']);
- Route::post('transaction/delete',[transactionController::class,'delete']);
- Route::post('transaction/update',[transactionController::class,'update']);
-
-
-
-
-
-
-
-//  http://127.0.0.1:8000/api/transaction/create
-//  http://127.0.0.1:8000/api/transaction/view
-//  http://127.0.0.1:8000/api/transaction/update
-//  http://127.0.0.1:8000/api/transaction/delete
