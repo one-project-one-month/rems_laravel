@@ -53,7 +53,6 @@ class UserController extends Controller
         } elseif ($user->role == 'client') {
             Client::create([
                 'user_id' => $user->id,
-
                 'first_name' => $request->input('first_name'),
                 'last_name' => $request->input('last_name'),
                 'phone' => $user->phone,
@@ -64,6 +63,97 @@ class UserController extends Controller
         return response()->json([
             'status' => true,
             'message'=> 'success',
+            'token'=>$user->createToken("API TOKEN")->plainTextToken
+        ],200);
+
+    }
+
+    public function registerClient(Request $request)
+    {
+        $validatedData = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'first_name'=>'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'address'=>'required|string|max:255',
+            'role' => 'required|string|max:255',
+        ]);
+        if($validatedData->fails()){
+                    return response()->json([
+                        'status' => false,
+                        'message'=> 'validation error',
+                        'errors' => $validatedData->errors()
+                    ],422);
+                }
+
+         $user = User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password)
+         ]);
+
+            $client=Client::create([
+                'user_id' => $user->id,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'address' => $request->address,
+            ]);
+
+        return response()->json([
+            'status' => true,
+            'message'=> 'Clients account created successfully',
+            'token'=>$user->createToken("API TOKEN")->plainTextToken
+        ],200);
+
+    }
+
+    public function registerAgent(Request $request)
+    {
+        $validatedData = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'agency_name'=>'required|string|max:255',
+            'license_number' => 'required|string|max:255',
+            'address'=>'required|string|max:255',
+            'role' => 'required|string|max:255',
+        ]);
+        if($validatedData->fails()){
+                    return response()->json([
+                        'status' => false,
+                        'message'=> 'validation error',
+                        'errors' => $validatedData->errors()
+                    ],422);
+                }
+
+         $user = User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' => Hash::make($request->password)
+         ]);
+
+            Agent::create([
+                'user_id' => $user->id,
+                'agency_name' => $request->input('agency_name'),
+                'license_number' => $request->input('license_number'),
+                'phone' => $user->phone,
+                'email' => $user->email,
+                'address' => $request->input('address'),
+            ]);
+
+
+        return response()->json([
+            'status' => true,
+            'message'=> 'Agents account created successfully',
             'token'=>$user->createToken("API TOKEN")->plainTextToken
         ],200);
 

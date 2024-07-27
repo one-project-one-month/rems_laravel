@@ -1,0 +1,2154 @@
+{
+	"info": {
+		"_postman_id": "f81acede-ec71-40ec-b867-521c582438c5",
+		"name": "Rems",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32335107"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/users",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get All User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/users",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:20:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"datas\": [\n        {\n            \"id\": 1,\n            \"name\": \"tt\",\n            \"email\": \"tt@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"088778888\",\n            \"role\": \"agent\",\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"ttz\",\n            \"email\": \"abc@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766\",\n            \"role\": \"agent\",\n            \"created_at\": \"2024-07-14T09:41:32.000000Z\",\n            \"updated_at\": \"2024-07-14T09:41:32.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"user1\",\n            \"email\": \"user@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"098777666\",\n            \"role\": \"client\",\n            \"created_at\": \"2024-07-14T10:05:29.000000Z\",\n            \"updated_at\": \"2024-07-14T10:05:29.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"user2\",\n            \"email\": \"user2@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766633\",\n            \"role\": \"client\",\n            \"created_at\": \"2024-07-14T10:08:12.000000Z\",\n            \"updated_at\": \"2024-07-14T10:08:12.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"user4\",\n            \"email\": \"user4@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766633\",\n            \"role\": \"client\",\n            \"created_at\": \"2024-07-14T10:12:03.000000Z\",\n            \"updated_at\": \"2024-07-14T10:12:03.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"user5\",\n            \"email\": \"user5@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766633\",\n            \"role\": \"agent\",\n            \"created_at\": \"2024-07-14T10:13:04.000000Z\",\n            \"updated_at\": \"2024-07-14T10:13:04.000000Z\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"user7\",\n            \"email\": \"usegg@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766633\",\n            \"role\": \"agent\",\n            \"created_at\": \"2024-07-14T10:14:56.000000Z\",\n            \"updated_at\": \"2024-07-14T10:14:56.000000Z\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"user7\",\n            \"email\": \"usegggg@gmail.comf\",\n            \"email_verified_at\": null,\n            \"phone\": \"09877766633\",\n            \"role\": \"client\",\n            \"created_at\": \"2024-07-17T13:47:57.000000Z\",\n            \"updated_at\": \"2024-07-17T13:47:57.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register?name=agent one&email=agentone@gmail.com&password=asdffdsa&role=agent&agency_name=agency name one&license_number=23456&phone=0987765667&address=Yangon",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "agent one"
+								},
+								{
+									"key": "email",
+									"value": "agentone@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "asdffdsa"
+								},
+								{
+									"key": "role",
+									"value": "agent"
+								},
+								{
+									"key": "agency_name",
+									"value": "agency name one"
+								},
+								{
+									"key": "license_number",
+									"value": "23456"
+								},
+								{
+									"key": "phone",
+									"value": "0987765667"
+								},
+								{
+									"key": "address",
+									"value": "Yangon"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Agent Register Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/register?name=agent one&email=agentone@gmail.com&password=asdffdsa&role=agent&agency_name=agency name one&license_number=23456&phone=0987765667&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "agent one"
+										},
+										{
+											"key": "email",
+											"value": "agentone@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										},
+										{
+											"key": "role",
+											"value": "agent"
+										},
+										{
+											"key": "agency_name",
+											"value": "agency name one"
+										},
+										{
+											"key": "license_number",
+											"value": "23456"
+										},
+										{
+											"key": "phone",
+											"value": "0987765667"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:28:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"token\": \"1|6DVMNkMOofRSQuJGuy4aunUXks6ExKLjDYHVmYgscad4a979\"\n}"
+						},
+						{
+							"name": "Agent Register Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/register?name=agent one&email=agentone@gmail.com&password=asdffdsa&role=agent&phone=0987765667&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "agent one"
+										},
+										{
+											"key": "email",
+											"value": "agentone@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										},
+										{
+											"key": "role",
+											"value": "agent"
+										},
+										{
+											"key": "agency_name",
+											"value": "agency name one",
+											"disabled": true
+										},
+										{
+											"key": "license_number",
+											"value": "23456",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "0987765667"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:29:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"validation error\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "Client Register Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/register?name=agent one&email=agenton5e@gmail.com&password=asdffdsa&role=client&first_name=agency name one&last_name=23456&phone=0987765667&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "agent one"
+										},
+										{
+											"key": "email",
+											"value": "agenton5e@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										},
+										{
+											"key": "role",
+											"value": "client"
+										},
+										{
+											"key": "first_name",
+											"value": "agency name one"
+										},
+										{
+											"key": "last_name",
+											"value": "23456"
+										},
+										{
+											"key": "phone",
+											"value": "0987765667"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:34:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"token\": \"1|SEdh1wNioxWlbwlKw2L1jrmqDxD1SJW1HsIv7l9h5d948b71\"\n}"
+						},
+						{
+							"name": "Client Register Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/register?name=agent one&email=agenton5e@gmail.com&password=asdffdsa&role=client&phone=0987765667&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "agent one"
+										},
+										{
+											"key": "email",
+											"value": "agenton5e@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										},
+										{
+											"key": "role",
+											"value": "client"
+										},
+										{
+											"key": "first_name",
+											"value": "agency name one",
+											"disabled": true
+										},
+										{
+											"key": "last_name",
+											"value": "23456",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "0987765667"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:35:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"validation error\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register?name=agent one&email=agentone@gmail.com&password=asdffdsa&role=agent&agency_name=agency name one&license_number=23456&phone=0987765667&address=Yangon",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "agent one"
+								},
+								{
+									"key": "email",
+									"value": "agentone@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "asdffdsa"
+								},
+								{
+									"key": "role",
+									"value": "agent"
+								},
+								{
+									"key": "agency_name",
+									"value": "agency name one"
+								},
+								{
+									"key": "license_number",
+									"value": "23456"
+								},
+								{
+									"key": "phone",
+									"value": "0987765667"
+								},
+								{
+									"key": "address",
+									"value": "Yangon"
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Agent Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login?email=agent12345@gmail.com&password=asdffdsa",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "agent12345@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:39:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successfully\",\n    \"user\": {\n        \"id\": 3,\n        \"name\": \"agent12345\",\n        \"email\": \"agent12345@gmail.com\",\n        \"email_verified_at\": null,\n        \"phone\": \"0987765667\",\n        \"role\": \"agent\",\n        \"created_at\": \"2024-07-22T13:39:26.000000Z\",\n        \"updated_at\": \"2024-07-22T13:39:26.000000Z\"\n    },\n    \"token\": \"4|4jZEehohiqHjlZLgQunzvmavIecLdETxckpHcIQ2eaee9ed8\"\n}"
+						},
+						{
+							"name": "Client Login Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/login?email=agenton22222@gmail.com&password=asdffdsa",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "agenton22222@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "asdffdsa"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:40:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successfully\",\n    \"user\": {\n        \"id\": 2,\n        \"name\": \"agent22222\",\n        \"email\": \"agenton22222@gmail.com\",\n        \"email_verified_at\": null,\n        \"phone\": \"0987765667\",\n        \"role\": \"client\",\n        \"created_at\": \"2024-07-22T13:36:38.000000Z\",\n        \"updated_at\": \"2024-07-22T13:36:38.000000Z\"\n    },\n    \"token\": \"5|GHjO6npB9ockuX0SjoN2Ifp4ttcbGqlrfFk29bvH8b0d1088\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/users?id=1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/users/1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:42:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"7|sv5bhYAYzfWkajVR12I3BFaELQUV2eJSJOmIx8Iz5601e61a\",\n    \"status\": true,\n    \"message\": \"found\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"agent one\",\n        \"email\": \"agenton5e@gmail.com\",\n        \"email_verified_at\": null,\n        \"phone\": \"0987765667\",\n        \"role\": \"client\",\n        \"created_at\": \"2024-07-22T13:34:56.000000Z\",\n        \"updated_at\": \"2024-07-22T13:34:56.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Get User By ID Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/users/100",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"users",
+										"100"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:44:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"use id is not found\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php\",\n    \"line\": 1386,\n    \"trace\": [\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php\",\n            \"line\": 47,\n            \"function\": \"abort\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/app/Http/Controllers/api/UserController.php\",\n            \"line\": 113,\n            \"function\": \"abort\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php\",\n            \"line\": 46,\n            \"function\": \"show\",\n            \"class\": \"App\\\\Http\\\\Controllers\\\\api\\\\UserController\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php\",\n            \"line\": 260,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\ControllerDispatcher\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Route.php\",\n            \"line\": 206,\n            \"function\": \"runController\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 806,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Routing\\\\Route\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 144,\n            \"function\": \"Illuminate\\\\Routing\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php\",\n            \"line\": 50,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 119,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 805,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 784,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 748,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Routing/Router.php\",\n            \"line\": 737,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 200,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 144,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php\",\n            \"line\": 51,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php\",\n            \"line\": 110,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php\",\n            \"line\": 62,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php\",\n            \"line\": 57,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php\",\n            \"line\": 119,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 175,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php\",\n            \"line\": 144,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php\",\n            \"line\": 1183,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/public/index.php\",\n            \"line\": 17,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"/Users/thantsinhtun/WebDevelopment/rems_laravel/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php\",\n            \"line\": 23,\n            \"function\": \"require_once\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Agents",
+			"item": [
+				{
+					"name": "Get All Agents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/agents",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"agents"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get All Agents",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/agents",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:48:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"datas\": [\n        {\n            \"id\": 1,\n            \"user_id\": 3,\n            \"agency_name\": \"agency name one\",\n            \"license_number\": \"23456\",\n            \"phone\": \"0987765667\",\n            \"email\": \"agent12345@gmail.com\",\n            \"address\": \"Yangon\",\n            \"created_at\": \"2024-07-22T13:39:26.000000Z\",\n            \"updated_at\": \"2024-07-22T13:39:26.000000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get Agent By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/agents/1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:48:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"8|WfraL9nrZ5x58oVW9Y4xODfj8NLD1bsbKst1Lilff16ecd09\",\n    \"status\": true,\n    \"message\": \"found\",\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 3,\n        \"agency_name\": \"agency name one\",\n        \"license_number\": \"23456\",\n        \"phone\": \"0987765667\",\n        \"email\": \"agent12345@gmail.com\",\n        \"address\": \"Yangon\",\n        \"created_at\": \"2024-07-22T13:39:26.000000Z\",\n        \"updated_at\": \"2024-07-22T13:39:26.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Get Agent By ID Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/agents/100",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents",
+										"100"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:51:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"agent is not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Agent Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/agents/3?agency_name=agency name update&license_number=3456&phone=09987776779&address=Taungoo",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"agents",
+								"3"
+							],
+							"query": [
+								{
+									"key": "agency_name",
+									"value": "agency name update"
+								},
+								{
+									"key": "license_number",
+									"value": "3456"
+								},
+								{
+									"key": "phone",
+									"value": "09987776779"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Taungoo"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update Agent Data Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/agents/1?agency_name=agency name update&license_number=3456&phone=09987776779&address=Taungoo",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents",
+										"1"
+									],
+									"query": [
+										{
+											"key": "agency_name",
+											"value": "agency name update"
+										},
+										{
+											"key": "license_number",
+											"value": "3456"
+										},
+										{
+											"key": "phone",
+											"value": "09987776779"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "address",
+											"value": "Taungoo"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:55:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"agent updated successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 3,\n        \"agency_name\": \"agency name update\",\n        \"license_number\": \"3456\",\n        \"phone\": \"09987776779\",\n        \"email\": \"agent12345@gmail.com\",\n        \"address\": \"Taungoo\",\n        \"created_at\": \"2024-07-22T13:39:26.000000Z\",\n        \"updated_at\": \"2024-07-22T13:55:11.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Agent Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/agents/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"agents",
+								"5"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Agent Delete Error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/agents/1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents",
+										"1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:56:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						},
+						{
+							"name": "Agent Delete Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/agents/1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"agents",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 13:58:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"delete success\",\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 3,\n        \"agency_name\": \"agency name update\",\n        \"license_number\": \"3456\",\n        \"phone\": \"09987776779\",\n        \"email\": \"agent12345@gmail.com\",\n        \"address\": \"Taungoo\",\n        \"created_at\": \"2024-07-22T13:39:26.000000Z\",\n        \"updated_at\": \"2024-07-22T13:55:11.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Get Client Data",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Get Clients Data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/clients",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:01:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"datas\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"first_name\": \"agency name one\",\n            \"last_name\": \"23456\",\n            \"phone\": \"0987765667\",\n            \"email\": \"agenton5e@gmail.com\",\n            \"address\": \"Yangon\",\n            \"created_at\": \"2024-07-22T13:34:56.000000Z\",\n            \"updated_at\": \"2024-07-22T13:34:56.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 2,\n            \"first_name\": \"agency name one\",\n            \"last_name\": \"23456\",\n            \"phone\": \"0987765667\",\n            \"email\": \"agenton22222@gmail.com\",\n            \"address\": \"Yangon\",\n            \"created_at\": \"2024-07-22T13:36:38.000000Z\",\n            \"updated_at\": \"2024-07-22T13:36:38.000000Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get Client By Id Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_url}}/clients/2",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:02:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"10|B2vf6Gcqnnwz4Ij56LvgSb8FyzHB9OQV9c17Jmb30b6d121a\",\n    \"status\": true,\n    \"message\": \"found\",\n    \"data\": {\n        \"id\": 2,\n        \"user_id\": 2,\n        \"first_name\": \"agency name one\",\n        \"last_name\": \"23456\",\n        \"phone\": \"0987765667\",\n        \"email\": \"agenton22222@gmail.com\",\n        \"address\": \"Yangon\",\n        \"created_at\": \"2024-07-22T13:36:38.000000Z\",\n        \"updated_at\": \"2024-07-22T13:36:38.000000Z\"\n    }\n}"
+						},
+						{
+							"name": "Get Client By Id Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/clients/4",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"4"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:02:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"client is not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Client Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/4?first_name=thu&last_name=zar&phone=09765567777&email=ttz@gmail.com&address=Yangon",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"4"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "thu"
+								},
+								{
+									"key": "last_name",
+									"value": "zar"
+								},
+								{
+									"key": "phone",
+									"value": "09765567777"
+								},
+								{
+									"key": "email",
+									"value": "ttz@gmail.com"
+								},
+								{
+									"key": "address",
+									"value": "Yangon"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Client Data Update Error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/clients/4?first_name=thu&last_name=zar&phone=09765567777&email=ttz@gmail.com&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"4"
+									],
+									"query": [
+										{
+											"key": "first_name",
+											"value": "thu"
+										},
+										{
+											"key": "last_name",
+											"value": "zar"
+										},
+										{
+											"key": "phone",
+											"value": "09765567777"
+										},
+										{
+											"key": "email",
+											"value": "ttz@gmail.com"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:03:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						},
+						{
+							"name": "Client Data Update Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/clients/2?first_name=thu&last_name=zar&phone=09765567777&email=ttz@gmail.com&address=Yangon",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"2"
+									],
+									"query": [
+										{
+											"key": "first_name",
+											"value": "thu"
+										},
+										{
+											"key": "last_name",
+											"value": "zar"
+										},
+										{
+											"key": "phone",
+											"value": "09765567777"
+										},
+										{
+											"key": "email",
+											"value": "ttz@gmail.com"
+										},
+										{
+											"key": "address",
+											"value": "Yangon"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:05:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Client updated successfully\",\n    \"data\": {\n        \"id\": 2,\n        \"user_id\": 2,\n        \"first_name\": \"thu\",\n        \"last_name\": \"zar\",\n        \"phone\": \"09765567777\",\n        \"email\": \"ttz@gmail.com\",\n        \"address\": \"Yangon\",\n        \"created_at\": \"2024-07-22T13:36:38.000000Z\",\n        \"updated_at\": \"2024-07-22T14:05:13.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Client",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"5"
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete Client Data Error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/clients/5",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"5"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:06:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+						},
+						{
+							"name": "Delte Client Data Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_url}}/clients/2",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"clients",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.9"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Jul 2024 14:06:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"delete success\",\n    \"data\": {\n        \"id\": 2,\n        \"user_id\": 2,\n        \"first_name\": \"thu\",\n        \"last_name\": \"zar\",\n        \"phone\": \"09765567777\",\n        \"email\": \"ttz@gmail.com\",\n        \"address\": \"Yangon\",\n        \"created_at\": \"2024-07-22T13:36:38.000000Z\",\n        \"updated_at\": \"2024-07-22T14:05:13.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		}
+	]
+}
