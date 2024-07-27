@@ -11,8 +11,9 @@ use App\Models\Agent;
 use App\Models\User;
 
 
-
-Route::post("register", [UserController::class, "register"]);
+Route::post("register",[UserController::class,"register"]);
+Route::post("registerAgent",[UserController::class,"registerAgent"]);
+Route::post("registerClient",[UserController::class,"registerClient"]);
 Route::post("login", [UserController::class, "login"]);
 Route::post("logout", [UserController::class, "logout"])->middleware('auth:sanctum');
 Route::apiResource('users', UserController::class);

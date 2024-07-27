@@ -11,7 +11,7 @@ use App\Models\User;
 use App\Models\Client;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
-use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -40,10 +40,12 @@ class AgentController extends Controller  implements HasMiddleware
      */
     public function show($id)
     {
+        try{
         $agent=Agent::find($id);
         if (!$agent) {
-            abort(404,"agent is not found");
+            throw new NotFoundHttpException('agent is not found');
         }
+
         return response()->json([
             'token'=>$agent->createToken("API TOKEN")->plainTextToken,
             'status'=>true,
@@ -51,15 +53,20 @@ class AgentController extends Controller  implements HasMiddleware
             'data'=>$agent,
         ],200);
     }
+    catch (NotFoundHttpException $e) {
+        return response()->json(['error' => $e->getMessage()], 404);
+    }
+}
     /**
      * Update the specified resource in storage.
      * put - api/agents/id
      */
     public function update(Request $request,$id)
     {
+        try{
         $agent =Agent::findOrFail($id);
         if(!$agent){
-              abort(404,"agent is not found");
+            throw new NotFoundHttpException('agent is not found');
         }
 
         $request->validate(
@@ -74,6 +81,9 @@ class AgentController extends Controller  implements HasMiddleware
                 'message'=>"agent updated successfully",
                 'data'=>$agent,
             ],200);
+        }catch (NotFoundHttpException $e){
+            return response()->json(['error' => $e->getMessage()], 404);
+        }
     }
 
 
@@ -83,7 +93,11 @@ class AgentController extends Controller  implements HasMiddleware
      */
     public function destroy($id)
     {
-        $agent=Agent::findOrFail($id);
+        try{
+        $agent=Agent::find($id);
+        if(!$agent){
+            throw new NotFoundHttpException('agent is not found');
+        }
         $user=User::findOrFail($agent->user_id);
         $agent->delete();
         $user->delete();
@@ -91,6 +105,9 @@ class AgentController extends Controller  implements HasMiddleware
             'message'=>'delete success',
             'data'=>$agent,
         ],200);
+    }catch (NotFoundHttpException $e){
+        return response()->json(['error' => $e->getMessage()], 404);
+    }
 
     }
 
