@@ -9,6 +9,7 @@ use App\Http\Controllers\api\AgentController;
 use App\Http\Controllers\api\PropertyController;
 use App\Models\Agent;
 use App\Models\User;
+use App\Http\Controllers\api\ReviewsController;
 
 
 Route::post("register",[UserController::class,"register"]);
@@ -20,3 +21,4 @@ Route::apiResource('users', UserController::class);
 Route::apiResource("clients", ClientController::class);
 Route::apiResource("agents", AgentController::class);
 Route::apiResource("properties", PropertyController::class);
+Route::apiResource("reviews",ReviewsController::class)->middleware('auth:sanctum');
