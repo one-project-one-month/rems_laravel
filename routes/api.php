@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\AgentController;
-use App\Http\Controllers\api\appointmentController;
+use App\Http\Controllers\api\AppointmentController;
 use App\Models\Agent;
 use App\Models\User;
 
@@ -20,4 +20,4 @@ Route::apiResource('users',UserController::class);
  Route::apiResource("agents",AgentController::class);
 
 //appoinment 
-Route::resource("appointments",appointmentController::class);
+Route::apiResource("appointments",AppointmentController::class);
