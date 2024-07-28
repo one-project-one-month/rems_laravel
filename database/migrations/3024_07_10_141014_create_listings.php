@@ -12,7 +12,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->id('listing_id');
+            $table->id();
             $table->foreignId('property_id')->constrained('properties');
             $table->foreignId('agent_id')->constrained('agents');
             $table->dateTime('date_listed')->default(DB::raw('CURRENT_TIMESTAMP'));

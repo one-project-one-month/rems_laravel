@@ -10,9 +10,7 @@ use App\Models\Client;
 use App\Models\User;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
-//use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller implements HasMiddleware
@@ -38,9 +36,10 @@ class ClientController extends Controller implements HasMiddleware
      */
     public function show($id)
     {
+        try{
         $client=Client::find($id);
         if (!$client) {
-            abort(404,"client is not found");
+            throw new NotFoundHttpException('client is not found');
         }
         return response()->json([
             'token'=>$client->createToken("API TOKEN")->plainTextToken,
@@ -48,19 +47,20 @@ class ClientController extends Controller implements HasMiddleware
             'message'=>'found',
             'data'=>$client,
         ],200);
+    } catch (NotFoundHttpException $e) {
+        return response()->json(['error' => $e->getMessage()], 404);
     }
-
-
+    }
 
     /**
      * Update the specified resource in storage.
      * put - api/clients/id
      */
     public function update(Request $request,  $id)
-    {
+    {   try{
         $client=Client::find($id);
         if (!$client) {
-            abort(404,"client is not found");
+            throw new NotFoundHttpException('client is not found');
         }
         $validatedData = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
@@ -75,6 +75,9 @@ class ClientController extends Controller implements HasMiddleware
             'message'=>"Client updated successfully",
             'data'=>$client,
         ],200);
+    }catch (NotFoundHttpException $e) {
+        return response()->json(['error' => $e->getMessage()], 404);
+    }
 
     }
 
@@ -83,10 +86,10 @@ class ClientController extends Controller implements HasMiddleware
      * delete - api/clients/id
      */
     public function destroy($id)
-    {
+    {   try{
         $client=Client::find($id);
         if (!$client) {
-            abort(404,"client is not found");
+            throw new NotFoundHttpException('client is not found');
         }
         $user=User::findOrFail($client->user_id);
         $client->delete();
@@ -96,5 +99,8 @@ class ClientController extends Controller implements HasMiddleware
             'data'=>$client,
         ],200);
 
+    } catch (NotFoundHttpException $e){
+    return response()->json(['error' => $e->getMessage()], 404);
     }
+}
 }
