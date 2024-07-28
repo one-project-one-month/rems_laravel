@@ -13,12 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id("transaction_id");
+            $table->id();
             $table->foreignId("property_id")->constrained('properties');
-            $table->foreignId('buyer_id')->constrained('clients');
-            $table->foreignId('seller_id')->constrained('clients');
-            $table->foreignId('agent_id')->constrained('agents');
+            $table->foreignId('client_id')->constrained('clients');
             $table->date('transaction_date')->default(DB::raw('(CURRENT_DATE())'));
+            $table->integer('rental_period');
             $table->integer('sale_price');
             $table->integer('commission');
             $table->string('status', 50);
