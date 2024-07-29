@@ -10,6 +10,7 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
+        'agent_id',
         "address",
         "city",
         "state",
@@ -22,7 +23,12 @@ class Property extends Model
         "year_built",
         "description",
         "status",
-        "date_listed",
+        'availiablity_type',
+        'minrental_period', 
+        'approvedby',
+         'adddate', 
+         'editdate'
+   
     ];
 
 
