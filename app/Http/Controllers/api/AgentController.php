@@ -20,7 +20,7 @@ class AgentController extends Controller  implements HasMiddleware
     public static function middleware()
     {
         return [
-            new ControllersMiddleware('auth:sanctum',except: ['show','index'])
+            new ControllersMiddleware('auth:sanctum',except: ['show','index','search'])
         ];
     }
 
@@ -109,6 +109,21 @@ class AgentController extends Controller  implements HasMiddleware
         return response()->json(['error' => $e->getMessage()], 404);
     }
 
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('agency_name');
+
+        // Basic validation
+        if (empty($query)) {
+            return response()->json(['error' => 'Name query parameter is required'], 400);
+        }
+
+        // Search for the name in the database
+        $people = Agent::where('agency_name', 'like', '%' . $query . '%')->get();
+
+        return response()->json($people);
     }
 
 

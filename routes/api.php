@@ -20,3 +20,4 @@ Route::post("logout",[UserController::class,"logout"])->middleware('auth:sanctum
 Route::apiResource('users',UserController::class);
  Route::apiResource("clients",ClientController::class);
  Route::apiResource("agents",AgentController::class);
+ Route::get("search",[AgentController::class,"search"]);
