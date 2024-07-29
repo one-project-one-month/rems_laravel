@@ -8,6 +8,7 @@ use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\AgentController;
 use App\Http\Controllers\api\AppointmentController;
 use App\Http\Controllers\api\PropertyController;
+use App\Http\Controllers\api\ReviewsController;
 use App\Models\Agent;
 use App\Models\User;
 
@@ -15,6 +16,7 @@ use App\Models\User;
 
 
 Route::apiResource("appointments",AppointmentController::class);
+Route::post("register",[UserController::class,"register"]);
 Route::post("registerAgent",[UserController::class,"registerAgent"]);
 Route::post("registerClient",[UserController::class,"registerClient"]);
 Route::post("login", [UserController::class, "login"]);
