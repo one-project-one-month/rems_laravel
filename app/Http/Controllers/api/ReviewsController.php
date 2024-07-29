@@ -49,7 +49,7 @@ class ReviewsController extends Controller
     {
         $validatedData = Validator::make($request->all(), [
             'property_id' => 'required',
-            'rating' => 'required|integer',
+            'rating' => 'required|integer|between 1,10',
             'comments' => 'required|string',
         ]);
         if ($validatedData->fails()) {
@@ -106,13 +106,14 @@ class ReviewsController extends Controller
     public function update(Request $request, string $id)
     {
 
+
         $validatedData = Validator::make($request->all(), [
             'property_id' => 'required',
-            'rating' => 'required|integer',
+            'rating' => 'required|integer|between 1,10',
             'comments' => 'required|string',
         ]);
         $reviews=Reviews::find($id);
-//        dd($reviews);
+    //    dd($reviews);
         $reviews->comments=$request->comments;
         $reviews->property_id=$request->property_id;
         $reviews->rating=$request->rating;
