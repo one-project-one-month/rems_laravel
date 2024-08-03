@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\AgentController;
-use App\Http\Controllers\api\ClientController;
-use App\Http\Controllers\api\ReviewsController;
+use App\Http\Controllers\api\AppointmentController;
 use App\Http\Controllers\api\PropertyController;
-use App\Http\Controllers\api\appointmentController;
+use App\Http\Controllers\api\ReviewsController;
+use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\TransactionController;
 
 
+Route::apiResource("appointments",AppointmentController::class);
 Route::post("register",[UserController::class,"register"]);
 Route::post("registerAgent",[UserController::class,"registerAgent"]);
 Route::post("registerClient",[UserController::class,"registerClient"]);
@@ -24,5 +25,4 @@ Route::apiResource("clients", ClientController::class);
 Route::apiResource("agents", AgentController::class);
 Route::apiResource("properties", PropertyController::class);
 Route::apiResource("reviews",ReviewsController::class)->middleware('auth:sanctum');
-Route::apiResource("appointments",appointmentController::class);
-Route::apiResource('transaction',TransactionController::class);
+Route::apiResource("transaction",TransactionController::class);
