@@ -1,16 +1,17 @@
 <?php
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
-
-use App\Http\Controllers\api\UserController;
-use App\Http\Controllers\api\ClientController;
-use App\Http\Controllers\api\AgentController;
-use App\Http\Controllers\api\appointmentController;
-use App\Http\Controllers\api\PropertyController;
-use App\Models\Agent;
 use App\Models\User;
+use App\Models\Agent;
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\UserController;
+use App\Http\Controllers\api\AgentController;
+use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\ReviewsController;
+use App\Http\Controllers\api\PropertyController;
+use App\Http\Controllers\api\appointmentController;
+use App\Http\Controllers\api\TransactionController;
 
 
 Route::post("register",[UserController::class,"register"]);
@@ -24,3 +25,4 @@ Route::apiResource("agents", AgentController::class);
 Route::apiResource("properties", PropertyController::class);
 Route::apiResource("reviews",ReviewsController::class)->middleware('auth:sanctum');
 Route::apiResource("appointments",appointmentController::class);
+Route::apiResource('transaction',TransactionController::class);
