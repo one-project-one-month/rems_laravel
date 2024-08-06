@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use App\Models\Reviews;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
@@ -106,11 +108,16 @@ class PropertyController extends Controller implements HasMiddleware
         ]);
 
         $property = Property::findOrFail($id);
+        // calculate average rating
+        $avgRating=Property::find($id)->avg('rating');
+
+        
         $data = $property->update($data);
         if ($data) {
             return response()->json([
                 'message' => 'Property updated successfully',
-                'data' => $property
+                'data' => $property,
+                'avg_rating'=>$avgRating
             ], 200);
         }
         return response()->json([
