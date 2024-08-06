@@ -109,15 +109,14 @@ class PropertyController extends Controller implements HasMiddleware
 
         $property = Property::findOrFail($id);
         // calculate average rating
-        $avgRating=Property::find($id)->avg('rating');
+        $property->rating = Property::find($id)->avg('rating');
 
-        
+
         $data = $property->update($data);
         if ($data) {
             return response()->json([
                 'message' => 'Property updated successfully',
                 'data' => $property,
-                'avg_rating'=>$avgRating
             ], 200);
         }
         return response()->json([

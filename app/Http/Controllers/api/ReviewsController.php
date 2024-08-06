@@ -66,6 +66,7 @@ class ReviewsController extends Controller
             'rating' => $request->input('rating'),
             'comments' => $request->input('comments')
         ]);
+        
         return response()->json([
             'message' => 'success',
             'status' => true
@@ -79,16 +80,16 @@ class ReviewsController extends Controller
     public function show(string $id)
     {
         $review = Reviews::find($id);
-
       //  dd($review);
         return response()->json([
             "status" => "true",
             "message" => "success",
-            "rating" => $review->rating,
+            "rating" => $review->rating,  
             "comment" => $review->comments,
             "user" => $review->users->name,
             "user_id" => $review->users->id,
             "property" => $review->properties->property_type,
+
         ], 200);
     }
 

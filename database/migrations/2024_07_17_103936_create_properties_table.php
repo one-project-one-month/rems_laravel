@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->integer('number_of_bathrooms');
             $table->integer('year_built');
             $table->string('description');
+            $table->float('rating')->default(0.0);
             $table->string('status', 50);
             $table->dateTime('date_listed')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
