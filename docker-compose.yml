@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   laravel:
     image: bitnami/laravel:${LARAVEL_VERSION}

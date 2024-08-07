@@ -114,15 +114,13 @@ class AgentController extends Controller  implements HasMiddleware
     public function search(Request $request)
     {
         $query = $request->input('agency_name');
-
-        // Basic validation
+        $perPage = $request->input('per_page', 5); // Default to 15 results per page if not specified
+        $page = $request->input('page', 1); // Default to page 1 if not specified
         if (empty($query)) {
             return response()->json(['error' => 'Name query parameter is required'], 400);
         }
-
-        // Search for the name in the database
-        $people = Agent::where('agency_name', 'like', '%' . $query . '%')->get();
-
+        $people = Agent::where('agency_name', 'like', '%' . $query . '%')
+            ->paginate($perPage, ['*'], 'page', $page);
         return response()->json($people);
     }
 
