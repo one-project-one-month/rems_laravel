@@ -22,6 +22,7 @@ class Property extends Model
         "number_of_bathrooms",
         "year_built",
         "description",
+        "rating",
         "status",
         'availiablity_type',
         'minrental_period', 

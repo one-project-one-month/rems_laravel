@@ -25,6 +25,8 @@ return new class extends Migration {
             $table->integer('number_of_bedrooms');
             $table->integer('number_of_bathrooms');
             $table->integer('year_built');
+            $table->float('rating')->default(0.0);
+            $table->dateTime('date_listed')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('description')->nullable();
             $table->string('status', 50)->nullable();
             $table->string('availiablity_type', 50);
