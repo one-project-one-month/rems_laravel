@@ -19,7 +19,7 @@ class ReviewsController extends Controller
     {
         $comments="";
         $ratings="";
-        $review=Reviews::all();
+        $review=Reviews::paginate(10);
         foreach ($review as $r){
             $comments.=$r->comments."<br>";
             $ratings.=$r->rating."<br>";
@@ -28,7 +28,10 @@ class ReviewsController extends Controller
             'message' => 'success',
             'status' => true,
             'comments'=>$comments,
-            'rating'=>$ratings
+            'rating'=>$ratings,
+            'count' => $review->total(),
+            'currentPage' => $review->currentPage(),
+            'lastPage' => $review->lastPage()
         ]);
 
     }
@@ -49,7 +52,7 @@ class ReviewsController extends Controller
     {
         $validatedData = Validator::make($request->all(), [
             'property_id' => 'required',
-            'rating' => 'required|integer|between 1,10',
+            'rating' => 'required|integer',
             'comments' => 'required|string',
         ]);
         if ($validatedData->fails()) {
@@ -66,7 +69,6 @@ class ReviewsController extends Controller
             'rating' => $request->input('rating'),
             'comments' => $request->input('comments')
         ]);
-        
         return response()->json([
             'message' => 'success',
             'status' => true
@@ -80,16 +82,16 @@ class ReviewsController extends Controller
     public function show(string $id)
     {
         $review = Reviews::find($id);
+
       //  dd($review);
         return response()->json([
             "status" => "true",
             "message" => "success",
-            "rating" => $review->rating,  
+            "rating" => $review->rating,
             "comment" => $review->comments,
             "user" => $review->users->name,
             "user_id" => $review->users->id,
             "property" => $review->properties->property_type,
-
         ], 200);
     }
 
@@ -107,14 +109,13 @@ class ReviewsController extends Controller
     public function update(Request $request, string $id)
     {
 
-
         $validatedData = Validator::make($request->all(), [
             'property_id' => 'required',
-            'rating' => 'required|integer|between 1,10',
+            'rating' => 'required|integer',
             'comments' => 'required|string',
         ]);
         $reviews=Reviews::find($id);
-    //    dd($reviews);
+//        dd($reviews);
         $reviews->comments=$request->comments;
         $reviews->property_id=$request->property_id;
         $reviews->rating=$request->rating;

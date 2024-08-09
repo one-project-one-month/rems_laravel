@@ -14,11 +14,14 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::paginate(10);
 
         return response()->json([
-            'count' => count($appointments),
-            'data' => $appointments]);
+            'count' => $appointments->total(),
+            'data' => $appointments->items(),
+            'current_page' => $appointments->currentPage(),
+            'last_page' => $appointments->lastPage(),
+        ]);
     }
 
     /**
