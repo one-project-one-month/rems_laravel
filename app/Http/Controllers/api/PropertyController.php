@@ -21,14 +21,55 @@ class PropertyController extends Controller implements HasMiddleware
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(Request $request)
 
-        $properties = Property::all();
+    {
+        $query = Property::query();
+
+        
+       
+
+        if ($request->has('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+
+        if ($request->has('property_type')) {
+            $query->where('property_type', 'like', '%' . $request->property_type . '%');
+        }
+
+        if ($request->has('price')) {
+            $query->where('price', $request->price);
+        }
+
+        if ($request->has('number_of_bedrooms')) {
+            $query->where('number_of_bedrooms', $request->number_of_bedrooms);
+        }
+
+        if ($request->has('number_of_bathrooms')) {
+            $query->where('number_of_bathrooms', $request->number_of_bathrooms);
+        }
+
+         // Sorting
+         if ($request->has('sort_by') && $request->has('sort_order')) {
+            $sortBy = $request->input('sort_by');
+            $sortOrder = $request->input('sort_order');
+            if (in_array($sortBy, ['price', 'agent_id']) && in_array($sortOrder, ['asc', 'desc'])) {
+                $query->orderBy($sortBy, $sortOrder);
+            }
+        }
+
+        
+
+        $properties = $query->paginate(10);
+
         return response()->json([
             'message' => 'Properties retrieved successfully',
-            'count' => count($properties),
-            'datas' => $properties
+            'count' => $properties->total(),
+            'datas' => $properties->items(),
+            'current_page' => $properties->currentPage(),
+            'last_page' => $properties->lastPage(),
+
+        
         ]);
     }
 
@@ -38,19 +79,26 @@ class PropertyController extends Controller implements HasMiddleware
     public function store(Request $request)
     {
         $data = $request->validate([
+            'agent_id' => 'required|integer|exists:agents,agent_id',
             'address' => 'required|string|min:200',
             'city' => 'required|string|min:100',
             'state' => 'required|string|min:50',
             'zip_code' => 'required|string|min:10',
             'property_type' => 'required|string|min:50',
             'price' => 'required|integer',
-            'size' => 'required',
+            'size' => 'required|numeric',
             'number_of_bedrooms' => 'required|integer',
             'number_of_bathrooms' => 'required|integer',
             'year_built' => 'required|integer',
+            'description' => 'nullable|string',
+            'status' => 'required|string|mzx:50',
+            'availiablity_type' => 'required|string|max:50',
+            'minrental_period' => 'nullable|integer',
+            'approvedby' => 'nullable|string|max:50',
             'description' => 'required|string',
-            'status' => 'required|string|min:50',
-            'date_listed' => 'nullable'
+             'adddate' => 'nullable|date',
+            'editdate' => 'nullable|date',
+            
         ]);
         // Store the property in the database
         $data = Property::create($data);
@@ -92,19 +140,25 @@ class PropertyController extends Controller implements HasMiddleware
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
+            'agent_id' => 'required|integer|exists:agents,agent_id',
             'address' => 'required|string|min:200',
             'city' => 'required|string|min:100',
             'state' => 'required|string|min:50',
             'zip_code' => 'required|string|min:10',
             'property_type' => 'required|string|min:50',
             'price' => 'required|integer',
-            'size' => 'required',
+            'size' => 'required|numeric',
             'number_of_bedrooms' => 'required|integer',
             'number_of_bathrooms' => 'required|integer',
             'year_built' => 'required|integer',
+            'description' => 'nullable|string',
+            'status' => 'required|string|mzx:50',
+            'availiablity_type' => 'required|string|max:50',
+            'minrental_period' => 'nullable|integer',
+            'approvedby' => 'nullable|string|max:50',
             'description' => 'required|string',
-            'status' => 'required|string|min:50',
-            'date_listed' => 'nullable'
+             'adddate' => 'nullable|date',
+            'editdate' => 'nullable|date',
         ]);
 
         $property = Property::findOrFail($id);
