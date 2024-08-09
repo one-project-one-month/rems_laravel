@@ -12,9 +12,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->increments('property_id');
-            $table->unsignedInteger('agent_id');
             $table->id();
+            $table->foreignId('agent_id')->references('id')->on('agents')->constrained();
             $table->string('address', 200);
             $table->string('city', 100);
             $table->string('state', 50);
@@ -35,7 +34,6 @@ return new class extends Migration {
             $table->dateTime('adddate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('editdate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
-            $table->foreign('agent_id')->references('agent_id')->on('agents');
         });
     }
 
