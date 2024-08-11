@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\Reviews;
+use Validator;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -81,18 +82,18 @@ class PropertyController extends Controller implements HasMiddleware
 
         $validator = Validator::make($request->all(),[
             'agent_id' => 'required|integer|exists:agents,id',
-            'address' => 'required|string|min:200',
-            'city' => 'required|string|min:100',
-            'state' => 'required|string|min:50',
-            'zip_code' => 'required|string|min:10',
-            'property_type' => 'required|string|min:50',
+            'address' => 'required|string|max:200',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:50',
+            'zip_code' => 'required|string|min:5',
+            'property_type' => 'required|string|max:50',
             'price' => 'required|integer',
             'size' => 'required|numeric',
             'number_of_bedrooms' => 'required|integer',
             'number_of_bathrooms' => 'required|integer',
             'year_built' => 'required|integer',
             'description' => 'nullable|string',
-            'status' => 'required|string|mzx:50',
+            'status' => 'required|string|max:50',
             'availiablity_type' => 'required|string|max:50',
             'minrental_period' => 'nullable|integer',
             'approvedby' => 'nullable|string|max:50',
@@ -134,12 +135,12 @@ class PropertyController extends Controller implements HasMiddleware
         $inputs['editdate'] = $request['editdate'];
 
 
-        Property::insert($inputs);
+        $data = Property::insert($inputs);
 
         // Return a success response
         return response()->json([
             'message' => 'Property created successfully',
-            'data' => $data
+            'data' => $inputs
         ], 201);
     }
 
@@ -169,11 +170,11 @@ class PropertyController extends Controller implements HasMiddleware
     {
         $data = $request->validate([
             'agent_id' => 'required|integer|exists:agents,id',
-            'address' => 'required|string|min:200',
-            'city' => 'required|string|min:100',
-            'state' => 'required|string|min:50',
-            'zip_code' => 'required|string|min:10',
-            'property_type' => 'required|string|min:50',
+            'address' => 'required|string|max:200',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:50',
+            'zip_code' => 'required|string|min:5',
+            'property_type' => 'required|string|max:50',
             'price' => 'required|integer',
             'size' => 'required|numeric',
             'number_of_bedrooms' => 'required|integer',
