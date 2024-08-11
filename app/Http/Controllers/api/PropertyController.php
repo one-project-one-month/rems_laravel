@@ -78,8 +78,9 @@ class PropertyController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'agent_id' => 'required|integer|exists:agents,agent_id',
+
+        $validator = Validator::make($request->all(),[
+            'agent_id' => 'required|integer|exists:agents,id',
             'address' => 'required|string|min:200',
             'city' => 'required|string|min:100',
             'state' => 'required|string|min:50',
@@ -95,24 +96,51 @@ class PropertyController extends Controller implements HasMiddleware
             'availiablity_type' => 'required|string|max:50',
             'minrental_period' => 'nullable|integer',
             'approvedby' => 'nullable|string|max:50',
-            'description' => 'required|string',
-             'adddate' => 'nullable|date',
+            'adddate' => 'nullable|date',
             'editdate' => 'nullable|date',
-            
         ]);
-        // Store the property in the database
-        $data = Property::create($data);
-        // Return a success response
-        if ($data) {
+
+        //return error response
+        if($validator->fails()){
             return response()->json([
-                'message' => 'Property created successfully',
-                'data' => $data
-            ], 201);
-        }
-        // Return an error response
+                'message'=> 'validation error',
+                'errors' => $validator->errors()
+            ],422);
+        };
+
+        // Store the property in the database
+        $user = $request->user();
+
+        $agent_id = $user->agent ? $user->agent->id : null;
+
+        $inputs = [];
+        $inputs['agent_id'] = $agent_id;
+        $inputs['address'] = $request['address'];;
+        $inputs['city'] = $request['city'];
+        $inputs['state'] = $request['state'];
+        $inputs['zip_code'] = $request['zip_code'];
+        $inputs['property_type'] = $request['property_type'];
+        $inputs['price'] = $request['price'];
+        $inputs['size'] = $request['size'];
+        $inputs['number_of_bedrooms'] = $request['number_of_bedrooms'];
+        $inputs['number_of_bathrooms'] = $request['number_of_bathrooms'];
+        $inputs['year_built'] = $request['year_built'];
+        $inputs['description'] = $request['description'];
+        $inputs['status'] = $request['status'];
+        $inputs['availiablity_type'] = $request['availiablity_type'];
+        $inputs['minrental_period'] = $request['minrental_period'];
+        $inputs['approvedby'] = $request['approvedby'];
+        $inputs['adddate'] = $request['adddate'];
+        $inputs['editdate'] = $request['editdate'];
+
+
+        Property::insert($inputs);
+
+        // Return a success response
         return response()->json([
-            'message' => 'Failed to create property'
-        ], 500);
+            'message' => 'Property created successfully',
+            'data' => $data
+        ], 201);
     }
 
     /**
@@ -140,7 +168,7 @@ class PropertyController extends Controller implements HasMiddleware
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'agent_id' => 'required|integer|exists:agents,agent_id',
+            'agent_id' => 'required|integer|exists:agents,id',
             'address' => 'required|string|min:200',
             'city' => 'required|string|min:100',
             'state' => 'required|string|min:50',

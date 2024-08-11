@@ -42,10 +42,15 @@ class AppointmentController extends Controller
             ],422);
         };
         
-        $current_user = auth('sanctum')->user();
+        //get current user
+        $user = $request->user();
+        
+
+        //get client id with logged in user
+        $client_id = $user->client ? $user->client->id : null;
 
         $inputs = [];
-        $inputs['client_id'] = $current_user;
+        $inputs['client_id'] = $client_id;
         $inputs['property_id'] = $request['property_id'];;
         $inputs['appointment_date'] = $request['appointment_date'];
         $inputs['appointment_time'] = $request['appointment_time'];
