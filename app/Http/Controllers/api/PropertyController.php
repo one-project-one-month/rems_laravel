@@ -179,13 +179,12 @@ class PropertyController extends Controller implements HasMiddleware
             'number_of_bedrooms' => 'required|integer',
             'number_of_bathrooms' => 'required|integer',
             'year_built' => 'required|integer',
-            'description' => 'nullable|string',
-            'status' => 'required|string|mzx:50',
+            'status' => 'required|string|max:50',
             'availiablity_type' => 'required|string|max:50',
             'minrental_period' => 'nullable|integer',
             'approvedby' => 'nullable|string|max:50',
             'description' => 'required|string',
-             'adddate' => 'nullable|date',
+            'adddate' => 'nullable|date',
             'editdate' => 'nullable|date',
         ]);
 
