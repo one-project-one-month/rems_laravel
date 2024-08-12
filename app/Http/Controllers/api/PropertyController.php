@@ -81,7 +81,6 @@ class PropertyController extends Controller implements HasMiddleware
     {
 
         $validator = Validator::make($request->all(),[
-            'agent_id' => 'required|integer|exists:agents,id',
             'address' => 'required|string|max:200',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:50',

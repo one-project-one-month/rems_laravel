@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('appointment_date')->nullable(false);
             $table->time('appointment_time')->nullable(false);
             $table->string('status', 50);
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

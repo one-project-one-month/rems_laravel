@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,7 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
+            "property_id" => "required",
             "appointment_date" => "required|date",
             "appointment_time" => "required|date_format:H:i",
             "notes" => "string|max:50"
@@ -42,12 +44,9 @@ class AppointmentController extends Controller
             ],422);
         };
         
-        //get current user
-        $user = $request->user();
         
-
-        //get client id with logged in user
-        $client_id = $user->client ? $user->client->id : null;
+        $user = $request->user();
+        $client_id = $user->client ? $user->client->id : null; 
 
         $inputs = [];
         $inputs['client_id'] = $client_id;

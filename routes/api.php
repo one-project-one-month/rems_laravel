@@ -25,7 +25,7 @@ Route::apiResource("clients", ClientController::class);
 Route::apiResource("agents", AgentController::class);
 Route::apiResource("properties", PropertyController::class);
 Route::get("search", [AgentController::class, "search"]);
-Route::apiResource("appointments",AppointmentController::class);
+Route::apiResource("appointments",AppointmentController::class)->middleware('auth:sanctum');
 Route::apiResource("reviews", ReviewsController::class)->middleware('auth:sanctum');
 Route::apiResource("transaction",TransactionController::class);
 });
