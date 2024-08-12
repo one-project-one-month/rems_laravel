@@ -23,7 +23,7 @@ Route::post("logout", [UserController::class, "logout"])->middleware('auth:sanct
 Route::apiResource('users', UserController::class);
 Route::apiResource("clients", ClientController::class);
 Route::apiResource("agents", AgentController::class);
-Route::apiResource("properties", PropertyController::class);
+Route::apiResource("properties", PropertyController::class)->middleware('auth:sanctum');
 Route::get("search", [AgentController::class, "search"]);
 Route::apiResource("appointments",AppointmentController::class)->middleware('auth:sanctum');
 Route::apiResource("reviews", ReviewsController::class)->middleware('auth:sanctum');
