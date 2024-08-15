@@ -167,8 +167,7 @@ class PropertyController extends Controller implements HasMiddleware
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->validate([
-            'agent_id' => 'required|integer|exists:agents,id',
+        $validator = Validator::make($request->all(),[
             'address' => 'required|string|max:200',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:50',
@@ -188,20 +187,49 @@ class PropertyController extends Controller implements HasMiddleware
             'editdate' => 'nullable|date',
         ]);
 
-        $property = Property::findOrFail($id);
         // calculate average rating
-        $property->rating = Property::find($id)->avg('rating');
+        $property = Property::find($id);
+        if($property && !is_null($property->rating)){
+            Property::find($id)->avg('rating');
+        };
 
+        //get current user 
+        $user = $request->user();
+        $agent_id = $user->agent ? $user->agent->id : null;
 
-        $data = $property->update($data);
-        if ($data) {
+        $inputs = [];
+        $inputs['agent_id'] = $agent_id;
+        $inputs['address'] = $request['address'];;
+        $inputs['city'] = $request['city'];
+        $inputs['state'] = $request['state'];
+        $inputs['zip_code'] = $request['zip_code'];
+        $inputs['property_type'] = $request['property_type'];
+        $inputs['price'] = $request['price'];
+        $inputs['size'] = $request['size'];
+        $inputs['number_of_bedrooms'] = $request['number_of_bedrooms'];
+        $inputs['number_of_bathrooms'] = $request['number_of_bathrooms'];
+        $inputs['year_built'] = $request['year_built'];
+        $inputs['description'] = $request['description'];
+        $inputs['status'] = $request['status'];
+        $inputs['availiablity_type'] = $request['availiablity_type'];
+        $inputs['minrental_period'] = $request['minrental_period'];
+        $inputs['approvedby'] = $request['approvedby'];
+        $inputs['adddate'] = $request['adddate'];
+        $inputs['editdate'] = $request['editdate'];
+
+        // update property
+        Property::where('id',$id)->update($inputs);
+
+        if($validator->fails()){
             return response()->json([
-                'message' => 'Property updated successfully',
-                'data' => $property,
-            ], 200);
-        }
+                'message'=> 'validation error',
+                'errors' => $validator->errors()
+            ],422);
+            
+        };
+
         return response()->json([
-            'message' => 'Property can not be updated successfully',
+            'message' => "Updated the property successfully"
         ]);
     }
 
