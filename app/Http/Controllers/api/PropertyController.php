@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
-use App\Models\Property;
-use App\Models\Reviews;
 use Validator;
-
+use App\Models\Reviews;
+use App\Models\Property;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use Symfony\Component\Console\Input\Input;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
 
@@ -27,8 +28,8 @@ class PropertyController extends Controller implements HasMiddleware
     {
         $query = Property::query();
 
-        
-       
+
+
 
         if ($request->has('city')) {
             $query->where('city', 'like', '%' . $request->city . '%');
@@ -38,8 +39,11 @@ class PropertyController extends Controller implements HasMiddleware
             $query->where('property_type', 'like', '%' . $request->property_type . '%');
         }
 
-        if ($request->has('price')) {
-            $query->where('price', $request->price);
+        if ($request->has('min_price') || $request->has('max_price')) {
+            $minPrice = $request->query('min_price');
+            $maxPrice = $request->query('max_price');
+            $products = Property::whereBetween('price', [$minPrice, $maxPrice])->get();
+            return response()->json($products);
         }
 
         if ($request->has('number_of_bedrooms')) {
@@ -59,7 +63,7 @@ class PropertyController extends Controller implements HasMiddleware
             }
         }
 
-        
+
 
         $properties = $query->paginate(10);
 
@@ -70,7 +74,7 @@ class PropertyController extends Controller implements HasMiddleware
             'current_page' => $properties->currentPage(),
             'last_page' => $properties->lastPage(),
 
-        
+
         ]);
     }
 
@@ -96,8 +100,6 @@ class PropertyController extends Controller implements HasMiddleware
             'availiablity_type' => 'required|string|max:50',
             'minrental_period' => 'nullable|integer',
             'approvedby' => 'nullable|string|max:50',
-            'adddate' => 'nullable|date',
-            'editdate' => 'nullable|date',
         ]);
 
         //return error response
@@ -130,8 +132,6 @@ class PropertyController extends Controller implements HasMiddleware
         $inputs['availiablity_type'] = $request['availiablity_type'];
         $inputs['minrental_period'] = $request['minrental_period'];
         $inputs['approvedby'] = $request['approvedby'];
-        $inputs['adddate'] = $request['adddate'];
-        $inputs['editdate'] = $request['editdate'];
 
 
         $data = Property::insert($inputs);
@@ -183,8 +183,6 @@ class PropertyController extends Controller implements HasMiddleware
             'minrental_period' => 'nullable|integer',
             'approvedby' => 'nullable|string|max:50',
             'description' => 'required|string',
-            'adddate' => 'nullable|date',
-            'editdate' => 'nullable|date',
         ]);
 
         // calculate average rating
@@ -193,7 +191,7 @@ class PropertyController extends Controller implements HasMiddleware
             Property::find($id)->avg('rating');
         };
 
-        //get current user 
+        //get current user
         $user = $request->user();
         $agent_id = $user->agent ? $user->agent->id : null;
 
@@ -214,8 +212,6 @@ class PropertyController extends Controller implements HasMiddleware
         $inputs['availiablity_type'] = $request['availiablity_type'];
         $inputs['minrental_period'] = $request['minrental_period'];
         $inputs['approvedby'] = $request['approvedby'];
-        $inputs['adddate'] = $request['adddate'];
-        $inputs['editdate'] = $request['editdate'];
 
         // update property
         Property::where('id',$id)->update($inputs);
@@ -225,7 +221,7 @@ class PropertyController extends Controller implements HasMiddleware
                 'message'=> 'validation error',
                 'errors' => $validator->errors()
             ],422);
-            
+
         };
 
         return response()->json([
