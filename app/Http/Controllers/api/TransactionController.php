@@ -29,8 +29,8 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'property_id' => 'required',
-            'client_id' => 'required',
+            'property_id' => 'required|exists:properties,id',
+            'client_id' => 'required|exists:clients,id',
             'rental_period' => 'required',
             'transaction_date' => 'required',
             'sale_price' => 'required',

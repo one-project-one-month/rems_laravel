@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
 
 return new class extends Migration {
     /**
@@ -25,15 +26,14 @@ return new class extends Migration {
             $table->integer('number_of_bathrooms');
             $table->integer('year_built');
             $table->float('rating')->default(0.0);
-            $table->dateTime('date_listed')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('description')->nullable();
             $table->string('status', 50)->nullable();
             $table->string('availiablity_type', 50);
             $table->integer('minrental_period');
             $table->string('approvedby', 50);
-            $table->dateTime('adddate')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('editdate')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+
         });
     }
 
