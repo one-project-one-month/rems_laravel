@@ -25,11 +25,10 @@ class Property extends Model
         "rating",
         "status",
         'availiablity_type',
-        'minrental_period', 
+        'minrental_period',
         'approvedby',
-        'adddate',
-        'editdate'
-   
+        'created_at',
+        'updated_at'
     ];
 
 
