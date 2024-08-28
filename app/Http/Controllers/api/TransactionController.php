@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
@@ -28,7 +29,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validatedData = Validator::make($request->all(),[
             'property_id' => 'required|exists:properties,id',
             'client_id' => 'required|exists:clients,id',
             'rental_period' => 'required',
@@ -37,7 +38,20 @@ class TransactionController extends Controller
             'commission' => 'required',
             'status' => 'required'
          ]);
-         $create = Transaction::create($data);
+
+         if ($validatedData->fails()) {
+            return response()->json(['status' => false,'message' => 'validation error','errors' => $validatedData->errors()], 200);
+        }
+
+         $create = Transaction::create([
+            'property_id' => $request->property_id,
+            'client_id' => $request->client_id,
+            'rental_period' => $request->rental_period,
+            'transaction_date' => $request->transaction_date,
+            'sale_price' => $request->sale_price,
+            'commission' => $request->commission,
+            'status' => $request->status
+         ]);
         return response()->json(['status' => true,'message'=> $create],200);
     }
 

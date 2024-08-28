@@ -27,8 +27,6 @@ class Property extends Model
         'availiablity_type',
         'minrental_period',
         'approvedby',
-        'created_at',
-        'updated_at'
     ];
 
 
