@@ -31,8 +31,7 @@ return new class extends Migration {
             $table->string('availiablity_type', 50);
             $table->integer('minrental_period');
             $table->string('approvedby', 50);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
         });
     }

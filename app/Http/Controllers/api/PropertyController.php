@@ -5,8 +5,9 @@ namespace App\Http\Controllers\api;
 use Validator;
 use App\Models\Reviews;
 use App\Models\Property;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use App\Models\PropertyImage;
 use App\Http\Controllers\Controller;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -132,7 +133,6 @@ class PropertyController extends Controller implements HasMiddleware
         $inputs['availiablity_type'] = $request['availiablity_type'];
         $inputs['minrental_period'] = $request['minrental_period'];
         $inputs['approvedby'] = $request['approvedby'];
-
 
         $data = Property::insert($inputs);
 
