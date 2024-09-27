@@ -28,6 +28,32 @@ class AgentController extends Controller  implements HasMiddleware
      * Display a listing of the resource.
      * get - api/agents
      */
+    /**
+* @OA\Get(
+* path="/api/v1/agents",
+* operationId="Agent",
+* tags={"Agents"},
+* summary="Agents",
+* description="Agents here",
+*      @OA\Response(
+*          response=201,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=200,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=422,
+*          description="Unprocessable Entity",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(response=400, description="Bad request"),
+*      @OA\Response(response=404, description="Resource Not Found"),
+* )
+*/
     public function index()
     {
         $agent=Agent::all();
@@ -38,6 +64,45 @@ class AgentController extends Controller  implements HasMiddleware
      * Display the specified resource.
      * get - api/agents/id
      */
+    /**
+* @OA\Get(
+* path="/api/v1/agents/{id}",
+* operationId="agents",
+* tags={"Agents"},
+* summary="agents",
+* description="agents here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*        ),
+*    ),
+*      @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="User ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+*      @OA\Response(
+*          response=201,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=200,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=422,
+*          description="Unprocessable Entity",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(response=400, description="Bad request"),
+*      @OA\Response(response=404, description="Resource Not Found"),
+* )
+*/
     public function show($id)
     {
         try{
@@ -61,6 +126,56 @@ class AgentController extends Controller  implements HasMiddleware
      * Update the specified resource in storage.
      * put - api/agents/id
      */
+/**
+ * @OA\Patch(
+ *     path="/api/v1/agents/{id}",
+ *     operationId="UpdateAgent",
+ *     tags={"Agents"},
+ *     summary="Update Agent",
+ *     description="Update Agent details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Agent ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             required={"email", "phone", "agency_name", "license_number"},
+ *             @OA\Property(property="phone", type="string", example="4384738483"),
+ *             @OA\Property(property="email", type="string", example="pyaephyo@gmail.com"),
+ *             @OA\Property(property="agency_name", type="string", example="Pyae Phyo"),
+ *             @OA\Property(property="license_number", type="string", example="3")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
+
+
     public function update(Request $request,$id)
     {
         try{
@@ -91,6 +206,45 @@ class AgentController extends Controller  implements HasMiddleware
      * Remove the specified resource from storage.
      * delete - api/agents/id
      */
+
+/**
+ * @OA\Delete(
+ *     path="/api/v1/agents/{id}",
+ *     operationId="DeleteAgent",
+ *     tags={"Agents"},
+ *     summary="Delete Agent",
+ *     description="Delete Agent details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Agent ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent deleted successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
+
     public function destroy($id)
     {
         try{
@@ -108,9 +262,44 @@ class AgentController extends Controller  implements HasMiddleware
     }catch (NotFoundHttpException $e){
         return response()->json(['error' => $e->getMessage()], 404);
     }
-
     }
 
+    /**
+ * @OA\Get(
+ *     path="/api/v1/search",
+ *     operationId="search",
+ *     tags={"Agents"},
+ *     summary="search",
+ *     description="searchs",
+ *     @OA\Parameter(
+ *         name="agency_name",
+ *         in="query",
+ *         required=true,
+ *         description="The agency name to search for",
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent deleted successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ * )
+ */
     public function search(Request $request)
     {
         $query = $request->input('agency_name');
