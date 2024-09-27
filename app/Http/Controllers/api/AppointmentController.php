@@ -13,6 +13,37 @@ class AppointmentController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+ /**
+* @OA\Get(
+* path="/api/v1/appointments",
+* operationId="appointments",
+* tags={"Appointments"},
+* summary="appointments",
+* description="appointments here",
+*      @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function index()
     {
         $appointments = Appointment::paginate(10);
@@ -28,6 +59,52 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+/**
+* @OA\Post(
+* path="/api/v1/appointments",
+* operationId="appointmentsCreate",
+* tags={"Appointments"},
+* summary="appointments Create",
+* description="appointments here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*            @OA\Schema(
+*               type="object",
+*               required={"property_id","client_id", "appointment_date", "appointment_time","status","notes"},
+*               @OA\Property(property="property_id", type="integer",example="1"),
+*               @OA\Property(property="client_id", type="integer",example="1"),
+*               @OA\Property(property="appointment_date", type="Date",example="2024-09-10"),
+*               @OA\Property(property="appointment_time", type="time",example="12:00"),
+*               @OA\Property(property="status", type="string",example="success"),
+*               @OA\Property(property="notes", type="string",example="notes")
+*            ),
+*        ),
+*    ),
+*       @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -43,10 +120,10 @@ class AppointmentController extends Controller
                 'errors' => $validator->errors()
             ],422);
         };
-        
-        
+
+
         $user = $request->user();
-        $client_id = $user->client ? $user->client->id : null; 
+        $client_id = $user->client ? $user->client->id : null;
 
         $inputs = [];
         $inputs['client_id'] = $client_id;
@@ -66,6 +143,49 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      */
+  /**
+* @OA\Get(
+* path="/api/v1/appointments/{id}",
+* operationId="appointments show",
+* tags={"Appointments"},
+* summary="appointments",
+* description="appointments here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*        ),
+*    ),
+*      @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Appointment ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+*      @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function show(string $id)
     {
         $data = Appointment::select('appointments.*')->where('id',$id)->first();
@@ -78,10 +198,57 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
+/**
+ * @OA\Patch(
+ *     path="/api/v1/appointments/{id}",
+ *     operationId="UpdateAppointments",
+ *     tags={"Appointments"},
+ *     summary="Update Appointments",
+ *     description="Update Appointment details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Agent ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             required={"appointment_date","appointment_time","notes"},
+ *             @OA\Property(property="appointment_date", type="Date",example="2024-09-10"),
+ *             @OA\Property(property="appointment_time", type="time",example="12:00"),
+ *             @OA\Property(property="notes", type="string",example="notes")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
     public function update(Request $request, string $id)
     {
         $current_user = auth('sanctum')->user();
-        
+
         if($current_user->role == 'agent'){
             //if user = agent , can update only status
 
@@ -101,7 +268,7 @@ class AppointmentController extends Controller
                 "appointment_time" => "required|string",
                 "notes" => "string|max:50"
             ]);
-    
+
             if($validator->fails()){
                 return response()->json([
                     'message'=> 'validation error',
@@ -125,6 +292,43 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+/**
+ * @OA\Delete(
+ *     path="/api/v1/appointments/{id}",
+ *     operationId="DeleteAppointments",
+ *     tags={"Appointments"},
+ *     summary="Delete Appointments",
+ *     description="Delete Appointments details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Appointments ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent deleted successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
     public function destroy(string $id)
     {
         //only Client can delete the appointment , Agents can only decline using status

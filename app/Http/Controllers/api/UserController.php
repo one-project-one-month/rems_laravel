@@ -11,12 +11,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Info(
+ *     title="Laravel REMS",
+ *     version="1.0.1"
+ * )
+ * @OA\SecurityScheme(
+ *     type="http",
+ *     securityScheme="bearerAuth",
+ *     scheme="bearer",
+ *     bearerFormat="JWT"
+ * )
+ */
+
 class UserController extends Controller
 {
     /**
      * create new user in storage.
      * post - api/users/register
      */
+
     public function register(Request $request)
     {
         $validatedData = Validator::make($request->all(), [
@@ -68,6 +82,52 @@ class UserController extends Controller
 
     }
 
+/**
+* @OA\Post(
+* path="/api/v1/registerClient",
+* operationId="registerClient",
+* tags={"Users"},
+* summary="registerClient",
+* description="registerClient here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*            @OA\Schema(
+*               type="object",
+*               required={"name","email", "password", "role","first_name","last_name","address","phone"},
+*               @OA\Property(property="name", type="string",example="Pyae Phyo Khant"),
+*               @OA\Property(property="phone", type="string",example="4384738483"),
+*               @OA\Property(property="email", type="string",example="pyaephyo@gmail.com"),
+*               @OA\Property(property="first_name", type="string",example="Pyae Phyo"),
+*               @OA\Property(property="last_name", type="string",example="Khant"),
+*               @OA\Property(property="address", type="string",example="Kume"),
+*               @OA\Property(property="role", type="string",example="client"),
+*               @OA\Property(property="password", type="string",example="ppk344324"),
+*
+*            ),
+*        ),
+*    ),
+*      @OA\Response(
+*          response=201,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=200,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=422,
+*          description="Unprocessable Entity",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(response=400, description="Bad request"),
+*      @OA\Response(response=404, description="Resource Not Found")
+* )
+*/
+
     public function registerClient(Request $request)
     {
         $validatedData = Validator::make($request->all(), [
@@ -112,6 +172,52 @@ class UserController extends Controller
         ],200);
 
     }
+
+/**
+* @OA\Post(
+* path="/api/v1/registerAgent",
+* operationId="registerAgent",
+* tags={"Users"},
+* summary="registerAgent",
+* description="registerAgent here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*            @OA\Schema(
+*               type="object",
+*               required={"name","email", "password", "role","address","phone","agency_name","license_number"},
+*               @OA\Property(property="name", type="string",example="Pyae Phyo Khant"),
+*               @OA\Property(property="phone", type="string",example="4384738483"),
+*               @OA\Property(property="email", type="string",example="pyaephyo@gmail.com"),
+*               @OA\Property(property="agency_name", type="string",example="Pyae Phyo"),
+*               @OA\Property(property="license_number", type="string",example="3"),
+*               @OA\Property(property="address", type="string",example="Kume"),
+*               @OA\Property(property="role", type="string",example="Agent"),
+*               @OA\Property(property="password", type="string",example="ppk344324"),
+*
+*            ),
+*        ),
+*    ),
+*      @OA\Response(
+*          response=201,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=200,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=422,
+*          description="Unprocessable Entity",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(response=400, description="Bad request"),
+*      @OA\Response(response=404, description="Resource Not Found"),
+* )
+*/
 
     public function registerAgent(Request $request)
     {
@@ -162,6 +268,46 @@ class UserController extends Controller
      * login user in storage.
      * post - api/users/login
      */
+/**
+* @OA\Post(
+* path="/api/v1/login",
+* operationId="login",
+* tags={"Users"},
+* summary="login",
+* description="login here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*            @OA\Schema(
+*               type="object",
+*               required={"email", "password"},
+*               @OA\Property(property="email", type="string",example="pyaephyo@gmail.com"),
+*               @OA\Property(property="password", type="string",example="ppk344324"),
+*            ),
+*        ),
+*    ),
+*      @OA\Response(
+*          response=201,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=200,
+*          description="Register Successfully",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(
+*          response=422,
+*          description="Unprocessable Entity",
+*          @OA\JsonContent()
+*       ),
+*      @OA\Response(response=400, description="Bad request"),
+*      @OA\Response(response=404, description="Resource Not Found"),
+* )
+*/
+
+
     public function login(Request $request){
         $request->validate([
             'email'=> 'required|email|exists:users,email',
@@ -195,6 +341,33 @@ class UserController extends Controller
      * create new user with specifid id  in storage.
      * get - api/users/id
      */
+    /**
+ * /**
+ * @OA\Get(
+ *     path="/api/v1/users/{id}",
+ *     summary="Show user",
+ *     tags={"Users"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="User ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="User found",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="User not found",
+ *         @OA\JsonContent()
+ *     )
+ * )
+ */
+
+
  public function show($id)
  {
      $user=User::find($id);
@@ -214,6 +387,7 @@ class UserController extends Controller
      * remove user in storage.
      * delete - api/users/id
      */
+
  public function destroy($id)
    {
      $user = User::findOrFail($id);
@@ -222,8 +396,6 @@ class UserController extends Controller
         'message'=>"delete success",
         'data'=>$user,
      ],200);
-
-
  }
      /**
      * update user with specified id in storage.
@@ -261,6 +433,31 @@ class UserController extends Controller
      * logout the user.
      * post - api/users
      */
+/**
+ * @OA\POST(
+ *     path="/api/v1/logout",
+ *     summary="Logout user",
+ *     tags={"Users"},
+ *     @OA\Response(
+ *         response=200,
+ *         description="You are logged out",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Unauthorized",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Validation error",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
+
+
     public function logout(Request $request){
         $request->user()->tokens()->delete();
         return [

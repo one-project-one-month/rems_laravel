@@ -15,6 +15,36 @@ class ReviewsController extends Controller
     /**
      * Display a listing of the resource.
      */
+ /**
+* @OA\Get(
+* path="/api/v1/reviews",
+* operationId="Reviews",
+* tags={"Reviews"},
+* summary="Reviews",
+* description="Reviews here",
+*      @OA\Response(
+ *         response=200,
+ *         description="Reviews successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function index()
     {
         $comments="";
@@ -25,6 +55,7 @@ class ReviewsController extends Controller
             $ratings.=$r->rating."<br>";
         }
         return response()->json([
+            'review' => $review,
             'message' => 'success',
             'status' => true,
             'comments'=>$comments,
@@ -37,16 +68,52 @@ class ReviewsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
+/**
+ * * @OA\Post(
+* path="/api/v1/reviews",
+* operationId="reviews Create",
+* tags={"Reviews"},
+* summary="reviews create",
+* description="reviews create here",
+*     @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*            @OA\Schema(
+*               type="object",
+*               required={"user_id","property_id", "rating", "comments"},
+*               @OA\Property(property="user_id", type="integer",example="1"),
+*               @OA\Property(property="property_id", type="integer",example="1"),
+*               @OA\Property(property="rating", type="integer",example="3"),
+*               @OA\Property(property="comments", type="text",example="text"),
+*            ),
+*        ),
+*    ),
+*      @OA\Response(
+ *         response=200,
+ *         description="Reviews successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function store(Request $request)
 
     {
@@ -79,6 +146,50 @@ class ReviewsController extends Controller
     /**
      * Display the specified resource.
      */
+
+/**
+* @OA\Get(
+* path="/api/v1/reviews/{id}",
+* operationId="Reviews show",
+* tags={"Reviews"},
+* summary="Reviews show",
+* description="Reviews here",
+*      @OA\RequestBody(
+*         @OA\JsonContent(),
+*         @OA\MediaType(
+*            mediaType="multipart/form-data",
+*        ),
+*    ),
+*      @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="User ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+*      @OA\Response(
+ *         response=200,
+ *         description="Reviews successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+* )
+*/
     public function show(string $id)
     {
         $review = Reviews::find($id);
@@ -96,16 +207,57 @@ class ReviewsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
+
+/**
+ * @OA\Patch(
+ *     path="/api/v1/reviews/{id}",
+ *     operationId="UpdateReviews",
+ *     tags={"Reviews"},
+ *     summary="Update Reviews",
+ *     description="Update Reviews details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Agent ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             type="object",
+ *             required={"property_id", "rating", "comments"},
+ *               @OA\Property(property="property_id", type="integer",example="1"),
+ *               @OA\Property(property="rating", type="integer",example="3"),
+ *               @OA\Property(property="comments", type="text",example="text"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent updated successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
+
     public function update(Request $request, string $id)
     {
 
@@ -130,6 +282,43 @@ class ReviewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+/**
+ * @OA\Delete(
+ *     path="/api/v1/reviews/{id}",
+ *     operationId="DeleteReview",
+ *     tags={"Reviews"},
+ *     summary="Delete Review",
+ *     description="Delete Review details",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Review ID",
+ *         required=true,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Agent deleted successfully",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Unprocessable Entity",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Bad request",
+ *         @OA\JsonContent()
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Resource not found",
+ *         @OA\JsonContent()
+ *     ),
+ *     security={{"bearerAuth":{}}}
+ * )
+ */
     public function destroy(string $id)
     {
         $review=Reviews::find($id);
